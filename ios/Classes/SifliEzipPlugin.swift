@@ -32,7 +32,7 @@ public class SifliEzipPlugin: NSObject, FlutterPlugin {
         eColor: colorType,
         eType: UInt8(ezipColorType),
         binType: UInt8(ezipBinType),
-        boardType: SFBoardType(rawValue: UInt(boardType)) ?? .sfBoardType55X
+        boardType: SFBoardType(rawValue: UInt(boardType)) ?? SFBoardType(rawValue: 0)!
       ) {
         result(FlutterStandardTypedData(bytes: ezipResult))
       } else {
