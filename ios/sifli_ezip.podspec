@@ -17,9 +17,8 @@ transform png data to ezip bin, support gif to apng
   s.dependency 'Flutter'
   s.platform = :ios, '13.0'
 
-  # Sifli eZIP SDK framework
-  # Users need to download eZIPSDK.framework and place it in ios/Frameworks/
   s.vendored_frameworks = 'Frameworks/eZIPSDK.framework'
+  s.libraries = 'c++'
   s.frameworks = 'Foundation', 'UIKit'
 
   # Flutter.framework does not contain a i386 slice.
