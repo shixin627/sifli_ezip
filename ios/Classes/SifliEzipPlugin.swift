@@ -26,18 +26,15 @@ public class SifliEzipPlugin: NSObject, FlutterPlugin {
         return
       }
 
-      // Convert to NSData for SDK compatibility
-      let nsData = pngData.data as NSData
-
       // Call Sifli eZIPSDK
       if let ezipResult = ImageConvertor.eBin(
-        fromPNGData: nsData,
+        fromPNGData: pngData.data,
         eColor: colorType,
-        eType: Int32(ezipColorType),
-        binType: Int32(ezipBinType),
-        boardType: Int32(boardType)
+        eType: UInt8(ezipColorType),
+        binType: UInt8(ezipBinType),
+        boardType: SFBoardType(rawValue: UInt(boardType)) ?? .sfBoardType55X
       ) {
-        result(FlutterStandardTypedData(bytes: ezipResult as Data))
+        result(FlutterStandardTypedData(bytes: ezipResult))
       } else {
         result(FlutterError(code: "CONVERSION_FAILED",
                            message: "Failed to convert PNG to EZIP",
